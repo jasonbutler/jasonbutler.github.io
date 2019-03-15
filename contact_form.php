@@ -69,10 +69,10 @@ if(isset($_POST['email'])) {
     $email_message .= "Message: ".clean_string($contact_message)."\n";
  
 // create email headers
-$headers = 'From: '.$contact_email."\r\n".
-'Reply-To: '.$contact_email."\r\n" .
-'X-Mailer: PHP/' . phpversion();
-@mail($email_to, $email_subject, $email_message, $headers);  
+// $headers = 'From: '.$contact_email."\r\n".
+// 'Reply-To: '.$contact_email."\r\n" .
+// 'X-Mailer: PHP/' . phpversion();
+// @mail($email_to, $email_subject, $email_message, $headers);  
 ?>
  
 <!-- include your own success html here -->
