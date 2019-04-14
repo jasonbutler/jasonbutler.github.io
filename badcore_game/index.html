@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>SpongeUK - GDPR</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+</head>
+<body id="body">
+<div id="game"></div>
+<div class="fontloader">
+  <div id="one">.</div>
+  <div id="two">.</div>
+  <div id="three">.</div>
+  <div id="four">.</div>
+</div>
+<script src="js/libs.js"></script>
+<script src="js/game.js"></script>
+
+<!-- handlebars scripts -->
+<script id="popup-template" type="text/x-handlebars-template">
+  <div class="overlay-wrapper {{#if mobile}}mobile{{/if}}">
+  
+    <div class="popup {{#if mobile}}mobile{{/if}}">
+      <div class="pages">
+        {{#each pages}}
+        <div class="page{{#if @first}} active{{/if}}{{#if class}} {{class}}{{/if}}"{{#if style}}style="{{style}}"{{/if}}>
+          {{#if image}}
+            <img src="assets/images/{{image}}" class="content-image" />
+          {{/if}}
+          {{#if icon}}
+            <img src="assets/images/{{icon}}" class="content-icon" />
+          {{/if}}
+          {{#if title}}
+          <h3>{{{title}}}</h3>
+          {{/if}}
+          {{#if body}}
+          {{{body}}}
+          {{/if}}
+
+        </div>
+        {{/each}}
+      </div>
+      {{#if showPageNavigation}}
+       <div class="navigation">
+          <ul class="show">
+            {{#each pages}}
+              <li><a data-page="{{@index}}" class="pagePip {{#if @first}}active{{/if}}" href="#"></a></li>
+            {{/each}}
+          </ul>
+          <a href="#" class="closeButton">{{{button}}}</a>
+          <a href="#" class="altButton rightButton">{{{altButton}}}</a>
+        </div>
+        {{else}}
+          <div class="navigation">
+          <a href="#" class="closeButton show">{{{button}}}</a>
+          {{#if twoButtonPopup}}<a href="#" class="altButton rightButton show">{{{twoButtonPopup}}}</a>{{/if}}
+          </div>
+        {{/if}}
+     
+      
+    </div>
+    
+    <div>
+      {{#if showPageNavigation}}
+          <a href="#" class="nextButton{{#if mobile}} mobile{{/if}}"><span>Next</span></a>
+          <a href="#" class="prevButton hidden{{#if mobile}} mobile{{/if}}"><span>Prev</span></a>
+      {{/if}}
+    </div>
+   
+
+  </div>
+</script>
+
+</body>
+</html>

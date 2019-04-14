@@ -1,0 +1,743 @@
+{
+
+	"maximumQs":12,
+	
+	"allowedDomains": [
+		"bG0jYWxob4N1",
+		"MTI4LjAuMC5x",
+		"amFzb35uc4BvbmdlLmludGVybmFs",
+		"cmljaC6zcG0uZ3UuaW61ZXJuYWw=",
+		"cmV3aWV4YXJlYS6jby62aw==",
+		"Ki6sYXVuY3hhbmRsZWFybi6jby62aw==",
+		"Y3xvdWQuc3Nvcm1uY30t",
+		"c4BvbmdldWt4ZWIuYXp2cmV4ZWJzaXRlcy6uZXQ="
+	],
+
+	"settingsPageData": {
+		"title": "Pause Menu",
+		"buttons": [
+			{
+				"icon": "home",
+				"label": "Home"
+			},
+			{
+				"icon": "restart",
+				"label": "Restart"
+			},
+			{
+				"icon": "sound",
+				"label": "Sound"
+			},
+			{
+				"icon": "music",
+				"label": "Music"
+			},
+			{
+				"icon": "info",
+				"label": "T&Cs"
+			},
+			{
+				"icon": "help",
+				"label": "Help"
+			}
+		]
+	},
+
+	"questionStateData":{
+		"fbText":"ANSWER THE FOLLOWING QUESTION\nTO GET THE SATELLITE BACK ONLINE",
+		"hintDoneText":"WELL DONE\nNOW GET ALL THE REST BACK ONLINE!",
+		"offText":"OFFLINE",
+		"onText":"ONLINE",
+		"correctSound": "correct",
+      	"incorrectSound": "wrong",
+      	"selectSound": "blip"
+
+
+	},
+
+	"questionData":[
+		{
+			"category":["Great Marketing",0],
+			"qText":"Which of the following will help us achieve marketing effectiveness?\nSelect all that apply.",
+			"fbText":"All these statements demonstrate marketing effectiveness. We’ve got the best marketers in the industry, and you’re one of them",
+			"answers":[
+				{
+					"text":"Having robust measurement and evaluation processes","isCorrect":true
+				},
+				{
+					"text":"Developing marketing programmes that implement scale","isCorrect":true
+				},
+				{
+					"text":"Maximising return on marketing investment by using the Marketing Catalyst Growth Driver Module","isCorrect":true
+				},
+				{
+					"text":"Taking decisions based on data and facts","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Great Marketing",0],
+			"qText":"What do we mean by Peak Performance?\nSelect all that apply",
+			"fbText":"Peak Performance is defined by using the allocated resources for your brands in the best possible way. In practice, this means focusing on the small improvements that we can make on every activity and process at work",
+			"answers":[
+				{
+					"text":"Focusing on the small improvements we can make on every work activity","isCorrect":true
+				},
+				{
+					"text":"Concentrating on the most high-profile sales"
+				},
+				{
+					"text":"Using our allocated resources in the best possible way","isCorrect":true
+				},
+				{
+					"text":"Using Market Catalyst to manage our customer relationships"
+				}
+
+			]
+		},
+		{
+			"category":["Great Marketing",0],
+			"qText":"Which of these do we use to assess marketing effectiveness?\nSelect all that apply.",
+			"fbText":"We assess marketing effectivenss through behaviour and performance. Together they help us achieve Peak Performance",
+			"answers":[
+				{
+					"text":"Sales ability"
+				},
+				{
+					"text":"Behaviour","isCorrect":true
+				},
+				{
+					"text":"Available resources"
+				},
+				{
+					"text":"Performance","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Great Marketing",0],
+			"qText":"What is the performance equation?",
+			"fbText":"The performance equation is a simple way of highlighting areas to consider when selling or helping to sell.",
+			"answers":[
+				{
+					"text":"A method for highlighting areas to consider when selling or helping to sell","isCorrect":true
+				},
+				{
+					"text":"A method of calculating ROI"
+				},
+				{
+					"text":"A method to forecast the impact of your marketing plan"
+				},
+				{
+					"text":"A method to forecast your sales"
+				}
+
+			]
+		},
+		{
+			"category":["Great Marketing",0],
+			"qText":"Which of the following will help us build a robust understanding of what works and evaluate what we've done so far?",
+			"fbText":"Our decisions should be based on facts, not just ‘gut feelings’. By asking the right questions and using accurate data, we will be able to make better decisions that optimise our return on investments.",
+			"answers":[
+				{
+					"text":"Using the right data","isCorrect":true
+				},
+				{
+					"text":"Asking the right questions","isCorrect":true
+				},
+				{
+					"text":"Making the right decisions","isCorrect":true
+				},
+				{
+					"text":"Using Market Catalyst Growth Driver Module","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Great Marketing",0],
+			"qText":"How are Growth Drivers indicated in the Marketing Catalyst GDM?",
+			"fbText":"The plan for each brand is made up of one or several Growth Drivers – they are the coloured bars. Each Growth Driver’s name is written above the bar.",
+			"answers":[
+				{
+					"text":"Coloured arrows"
+				},
+				{
+					"text":"Coloured bars","isCorrect":true
+				},
+				{
+					"text":"Stars"
+				},
+				{
+					"text":"Grey bars"
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"What's Marketing Catalyst Growth Driver Module?",
+			"fbText":"Marketing Catalyst is a world-class online tool designed to put the power of data and analytics in your hands so that it's easier to make the best choices to deliver the best outcomes for your brands",
+			"answers":[
+				{
+					"text":"An online tool that puts the power of data and analytics in your hands","isCorrect":true
+				},
+				{
+					"text":"A process for creating marketing campaigns"
+				},
+				{
+					"text":"An annual marketing event to measure ROI"
+				},
+				{
+					"text":"An internal review system for our marketer"
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"What's the key to making the commercial impact forecast of the Growth Driver Module work?",
+			"fbText":"Marketing Catalyst relies on robust and accurate data to help you ask the right questions and make the right decisions. It draws from years of econometric data to forecast the impact your marketing plans will have.",
+			"answers":[
+				{
+					"text":"Running a successful campaign"
+				},
+				{
+					"text":"Optimising your spend"
+				},
+				{
+					"text":"Collecting the right data","isCorrect":true
+				},
+				{
+					"text":"Winning the best customers"
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"Which of the following will Marketing Catalyst Growth Driver Module help you to do?\nSelect all that apply.",
+			"fbText":"Marketing Catalyst is the first of its kind in the industry. It will help you to decide where to invest across your portfolio and choose the right mix of activities to deliver the best outcome for your brands. It will also help you to forecast the impact of your marketing plan",
+			"answers":[
+				{
+					"text":"Know where to invest across our portfolio","isCorrect":true
+				},
+				{
+					"text":"Choose the right mix of activities to deliver the best outcome for your brands","isCorrect":true
+				},
+				{
+					"text":"Create successful presentations for prospective customers"
+				},
+				{
+					"text":"Forecast the impact of your marketing plan","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"What is a Growth Driver?\nSelect all that apply.",
+			"fbText":"A Growth Driver is a proven and repeatable set of activities that drive recruitment for a specified situation. They are a combination of mental and physical activities developed for specific opportunities or challenges faced by the brand.",
+			"answers":[
+				{
+					"text":"A combination of activities to drive both physical and mental availability","isCorrect":true
+				},
+				{
+					"text":"A channel used to deliver growth"
+				},
+				{
+					"text":"A proven and repeatable set of activities that drive recruitment for a specified situation","isCorrect":true
+				},
+				{
+					"text":"A specific marketing execution within a vehicle that a consumer or shopper will experience"
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"What are the key aims of Marketing Catalyst Growth Driver Module?",
+			"fbText":"We want every decision and every pound we spend to work as hard as possible for us. To do that we need to know where best to invest across our portfolio and how to win over consumers with every single activity.",
+			"answers":[
+				{
+					"text":"To improve return on investment"
+				},
+				{
+					"text":"To have a clearer view of our activities"
+				},
+				{
+					"text":"To manage our consumer responses"
+				},
+				{
+					"text":"To win over consumers with every single activity","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"Which of the following are examples of vehicles used to deliver a Growth Driver?\nSelect all that apply.",
+			"fbText":"A vehicle is a channel used to deliver a Growth Driver, such as TV, magazines, social media, point of sale and value added packaging.",
+			"answers":[
+				{
+					"text":"TV","isCorrect":true
+				},
+				{
+					"text":"Magazines","isCorrect":true
+				},
+				{
+					"text":"Social media","isCorrect":true
+				},
+				{
+					"text":"Word of mouth"
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"How does the Marketing Catalyst demonstrate confidence in ROI and the commercial forecast data?",
+			"fbText":"Each vehicle is given a star rating in the brand planning view, to represent the confidence rating for the ROI and commercial forecast data that underpins it.",
+			"answers":[
+				{
+					"text":"By showing green arrows next to the data"
+				},
+				{
+					"text":"By using a star rating system","isCorrect":true
+				},
+				{
+					"text":"By highlighting the successful Growth Driver"
+				},
+				{
+					"text":"By showing grey arrows next to the data"
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"Which of the following views are available in the Marketing Catalyst Growth Driver tool?",
+			"fbText":"The Marketing Catalyst Growth Driver tool has four levels: Portfolio Planning view, Brand Planning view, Growth Driver Planning view and activity view.",
+			"answers":[
+				{
+					"text":"Vehicle Planning view"
+				},
+				{
+					"text":"Portfolio Planning view","isCorrect":true
+				},
+				{
+					"text":"Brand Planning view","isCorrect":true
+				},
+				{
+					"text":"Growth Driver Planning view","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Marketing Catalyst",1],
+			"qText":"Which of these describes the Brand Planning view in the Marketing Catalyst Growth Driver tool?",
+			"fbText":"The Brand Planning view gives you an overall sense of your marketing mix, viewing Growth Drivers by vehicle for a specific brand.",
+			"answers":[
+				{
+					"text":"The homepage, where you can see your marketing plans for the whole brand portfolio"
+				},
+				{
+					"text":"The page where you can get an overall sense of your marketing mix, viewing Growth Drivers by vehicle","isCorrect":true
+				},
+				{
+					"text":"The page that shows you all the schedued activities within a Growth Driver"
+				}
+
+			]
+		},
+		{
+			"category":["Using the right data",2],
+			"qText":"What does econometric modelling do?\nSelect all that apply.",
+			"fbText":"Econometric modelling is a statistical modelling technique that uses historical data to analyse the impact of marketing plans, and identifies and quantifies the relationships between sales and its drivers.",
+			"answers":[
+				{
+					"text":"Put the power of data and analytics in the consumer's hands"
+				},
+				{
+					"text":"Use historical data to analyse the impact of marketing plans","isCorrect":true
+				},
+				{
+					"text":"Forecast the impact on pricing"
+				},
+				{
+					"text":"Use only two of the influential factors (drivers) we have on sales to calculate short-term ROI"
+				}
+
+			]
+		},
+		{
+			"category":["Using the right data",2],
+			"qText":"What type of data does the Marketing Catalyst Growth Driver Module need you to input?\nSelect all that apply?",
+			"fbText":"By entering your marketing business plans (MBPs) in Marketing Catalyst Growth Driver Module, you will have the oportunity to grow your business faster by improving return on investment from an individual brand's marketing plan.",
+			"answers":[
+				{
+					"text":"Marginal gains results"
+				},
+				{
+					"text":"Marketing business plans","isCorrect":true
+				},
+				{
+					"text":"Profit reports"
+				},
+				{
+					"text":"ROIs"
+				}
+
+			]
+		},
+		{
+			"category":["Using the right data",2],
+			"qText":"How does Marketing Catalyst Growth Driver Module help us?\nSelect all that apply.",
+			"fbText":"Marketing Catalyst Growth Driver Module helps us in many ways, including providing visibility of what will happen if we increase a budget too much, too fast. Its predictions help us adjust the phasing and duration of different activities within the Growth Driver and indicate the level of confidence you can have in the ROI predictions.",
+			"answers":[
+				{
+					"text":"It allows us to see what will happen if we increase a budget too much, too fast","isCorrect":true
+				},
+				{
+					"text":"It indicates the level of confidence you can have in the ROI predictions","isCorrect":true
+				},
+				{
+					"text":"It helps us adjust the phasing and duration of different activities within the Growth Driver","isCorrect":true
+				},
+				{
+					"text":"It gives us a view of the wider economy"
+				}
+
+			]
+		},
+		{
+			"category":["Using the right data",2],
+			"qText":"Who can upload and optimise your marketing business plans on the Marketing Catalyst Growth Driver Module?",
+			"fbText":"Marketing Catalyst is designed to be used by both Diageo employees and our key agency partners to build optimised marketing plans and speed up decision making.",
+			"answers":[
+				{
+					"text":"Diageo colleagues only"
+				},
+				{
+					"text":"Diageo colleagues and key agency partners","isCorrect":true
+				},
+				{
+					"text":"Agency partners and clients"
+				},
+				{
+					"text":"Customers"
+				}
+
+			]
+		},
+		{
+			"category":["Using the right data",2],
+			"qText":"Which of the following are examples of Growth Drivers?\nSelect all that apply.",
+			"fbText":"A Growth Driver is a set of activities that you are going to execute during the year, and which will drive mental and physical availability.",
+			"answers":[
+				{
+					"text":"Distribution"
+				},
+				{
+					"text":"Made of More","isCorrect":true
+				},
+				{
+					"text":"Playful Versatility - Act On Impulse","isCorrect":true
+				},
+				{
+					"text":"Party Like the Captain","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Using the right data",2],
+			"qText":"What contributes to the accuracy of the commercial impact predictions?",
+			"fbText":"The better the data, the more accurate the commercial impact will be.",
+			"answers":[
+				{
+					"text":"Better Growth Drivers"
+				},
+				{
+					"text":"Better data","isCorrect":true
+				},
+				{
+					"text":"Better clients"
+				},
+				{
+					"text":"Better products"
+				}
+
+			]
+		},
+		{
+			"category":["Using the right data",2],
+			"qText":"What will happen if we don’t consider a balance between the short-term and long-term?",
+			"fbText":"If a consumer hasn’t heard or seen our brands for three months or more, they are likely to forget about them. The long-term impact will also be affected, as there is no positive long-term impact without a postive short-term impact.",
+			"answers":[
+				{
+					"text":"Consumers may forget about our brands if we stop communicating with them","isCorrect":true
+				},
+				{
+					"text":"The impact on brand sales may be affected in the short-term if we only concentrate in the long-term","isCorrect":true
+				},
+				{
+					"text":"We will have a shorter reach to future buyers"
+				},
+				{
+					"text":"Customers will decrease price"
+				}
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"Which of the following make up the performance equation?",
+			"fbText":"The performance equation is made of three parts: Gross Profit growth plus Brand Equity growth plus Market Share growth",
+			"answers":[
+				{
+					"text":"Gross Profit growth","isCorrect":true
+				},
+				{
+					"text":"ROI growth"
+				},
+				{
+					"text":"Brand Equity growth","isCorrect":true
+				},
+				{
+					"text":"Market Share growth","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"What do we mean by marginal gains?",
+			"fbText":"Marginal gains are the small improvements we make on every activity or process at work, that when added up make a big difference.",
+			"answers":[
+				{
+					"text":"Processes and investment opportunities"
+				},
+				{
+					"text":"Consumer sales"
+				},
+				{
+					"text":"Small improvements made on every activity and process at work","isCorrect":true
+				},
+				{
+					"text":"Focus on the big changes to marketing campaigns for the greatest impact"
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"What do we mean by short-term impact on brand sales?",
+			"fbText":"Short-term impact typically lasts from 3 to 12 months and is all about the immediate drinks won as a result of implementing a Growth Driver.",
+			"answers":[
+				{
+					"text":"The potential drinks to be won as a result of implementing a Growth Driver"
+				},
+				{
+					"text":"The immediate drinks won as a result of implementing a Growth Driver"
+				},
+				{
+					"text":"The drinks won in six months' time as a result of implementing a Growth Driver","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"Which of the following could contribute to achieving Peak Performance?",
+			"fbText":"One of the key ways to achieve Peak Performance is to focus on the small improvements we make on every activity or process, which collectively will make a big difference. Aligning the timing of activations and having an 'always-on' A&P strategy can help to amplify/increase ROI, and using more cost-efficient formats can typically deliver the best returns.",
+			"answers":[
+				{
+					"text":"Aligning the timing of activations across media, BTL and C&E","isCorrect":true
+				},
+				{
+					"text":"Having an “always-on” A&P strategy","isCorrect":true
+				},
+				{
+					"text":"Keeping communications within specific teams to minimise disruption to others"
+				},
+				{
+					"text":"Using more cost efficient formats (shorter TV copy, smaller OOH formats)","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"Which of the following does the statement below describe?\n'The effect of the immediate drinks won as a result of implementing a Growth Driver'.",
+			"fbText":"Short-term Gross Profit ROI means the immediate impact on incremental gross profit as a result of implementing a Growth Driver.",
+			"answers":[
+				{
+					"text":"Marginal Gross Profit ROI"
+				},
+				{
+					"text":"Long-term Gross Profit ROI"
+				},
+				{
+					"text":"Short-term Gross Profit ROI","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"Which of the following decisions will help us to drive Peak Performance?\nSelect all that apply.",
+			"fbText":"Peak Performance is about making the very best use of available resources to deliver results both in the short and long term. This may include reallocating funds to different activities or focusing on what our activities will deliver both today and tomorrow.",
+			"answers":[
+				{
+					"text":"Focus on what our activities will deliver today"
+				},
+				{
+					"text":"Focus on what our activities will deliver today and tomorrow","isCorrect":true
+				},
+				{
+					"text":"Reallocate funds to drive profits","isCorrect":true
+				},
+				{
+					"text":"Make cuts to drive profit"
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"What questions can we ask to better understand A&P ROI?\nSelect all that apply.",
+			"fbText":"Asking all of these questions will help us to better understand the A&P ROI.",
+			"answers":[
+				{
+					"text":"What is the short and long-term impact on brand sales?","isCorrect":true
+				},
+				{
+					"text":"What if we adjust the phasing?","isCorrect":true
+				},
+				{
+					"text":"What if we change the mix of activities in the Growh Driver?","isCorrect":true
+				},
+				{
+					"text":"What caused the results?","isCorrect":true
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"What do the grey arrows next to the Growth Driver in the Marketing Catalyst Growth Driver Module indicate?",
+			"fbText":"A grey arrow lets you know that you are currently working at the optimum level, so any further increases in spend from this point will reduce your ROI.",
+			"answers":[
+				{
+					"text":"That if you spend more, you'll increase your ROI"
+				},
+				{
+					"text":"That if you spend more you'll diminish ROI"
+				},
+				{
+					"text":"That you are currently working at the optimum level","isCorrect":true
+				},
+				{
+					"text":"That you need to change the timing of the activity"
+				}
+
+			]
+		},
+		{
+			"category":["Improving Gross Profit",3],
+			"qText":"What months does the timeline run from at the bottom of the Marketing Catalyst GDM?",
+			"fbText":"The timeline works as a calendar by using our financial year from July to June.",
+			"answers":[
+				{
+					"text":"January - December"
+				},
+				{
+					"text":"April-March"
+				},
+				{
+					"text":"June-July"
+				},
+				{
+					"text":"July-June","isCorrect":true
+				}
+
+			]
+		}
+	],
+
+
+	"htmlpopups": [
+
+
+		{
+
+			"id": "__test_popup",
+			"pages": [{
+					"pageStyle": "__feedback",
+					"title": "",
+					"body": "<p>Lumbersexual af kogi fingerstache, pabst keytar photo booth taiyaki flexitarian vice. Listicle marfa ramps brunch selfies chambray, vice helvetica brooklyn kale chips photo booth bitters prism.</p>",
+					"button": "CONTINUE"
+				}
+			]
+		},
+		{
+
+			"id": "__two_button_popup",
+			"pages": [{
+					"pageStyle": "__feedback",
+					"title": "",
+					"body": "<p>Lumbersexual af kogi fingerstache, pabst keytar photo booth taiyaki flexitarian vice. Listicle marfa ramps brunch selfies chambray, vice helvetica brooklyn kale chips photo booth bitters prism.</p>",
+					"button": "CANCEL",
+					"altButton": "CONTINUE"
+				}
+			]
+		},
+		{
+
+			"id": "__howTo_popup",
+			"pages": [
+				{
+					"pageStyle": "__pagedText",
+					"title": "Introduction",
+					"body": "<p>Welcome to the Diageo Marketing Catalyst Growth Driver Module (GDM) game! Your task is to fly through the dataverse collecting good data for the Marketing Catalyst GDM to improve your marketing business plans.</p><p>Be careful though, you need to avoid the bad data and other obstacles to keep your confidence ratings high and to earn the most gross profit!</p>"
+				},
+				{
+					"pageStyle": "__text-image",
+					"title": "How to play",
+					"body": "<img src='assets/images/popups/pop1.png'><p><strong>Desktop:</strong> Use the up and down cursors to move your player.</p><p><strong>Touch:</strong> Tap the top and bottom of the screen to move your player.</p>"
+				},
+				{
+					"pageStyle": "__text-image",
+					"title": "Collectibles",
+					"body": "<img src='assets/images/popups/pop2.png'><p>Fill up your meter with as much good data as you can. Try to avoid collecting bad data!</p><p>Remember, more good data will give you more chance of success.</p>"
+				},
+				{
+					"pageStyle": "__text-image",
+					"title": "4 key ingredients",
+					"body": "<img src='assets/images/popups/pop3.png'><p>Collect as many of the four key ingredients as you can - when combined they are a powerful concoction to help boost your performance!</p>"
+				},
+				{
+					"pageStyle": "__pagedText",
+					"title": "Test your knowledge",
+					"body": "<p>Once you've filled up on data, test your knowledge to add it to the growth driver tool. Answer each question correctly to boost your score, your forecasting skills and long term profit growth!</p>",
+					"button": "LET'S GO!"
+				}
+			]
+		},
+		{
+
+			"id": "__playerDead_popup",
+			"pages": [
+				{
+					"pageStyle": "__text-image",
+					"title": "Oh Dear!",
+					"body": "<img src='assets/images/popups/ogre.png'><p>It looks like you've been knocked out of the game by trolls!</p><p>Let's see how you did overall</p>",
+					"button": "CONTINUE"
+				}
+			]
+		}
+	]
+}
