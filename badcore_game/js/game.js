@@ -2515,7 +2515,7 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.cannon = SPG.Util.Display.debugSprite(this.game, this.game.width/2, this.game.height-10, 120, 120, "#ffffff");
     this.cannon.anchor.setTo(0.5);
 
-    this.restartBtn = new TextButton(this.game,this.game.width/2,600,"button","REPLAY",this.restartGame,this);
+    this.restartBtn = new TextButton(this.game,this.game.width/2,640,"button","REPLAY",this.restartGame,this);
     this.restartBtn.kill();
 };
 
@@ -2627,9 +2627,14 @@ SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
 
 SPG.BadcoreGameState.prototype.restartGame = function(){
     this.blocks.removeAll();
+    this.goals.forEach(function(item){
+        item.isSelected = false;
+        this.game.add.tween(item.indicator).to({alpha:0},800,Phaser.Easing.Quadratic.Out,true);
+    },this)
     this.dotsGroup.forEach(function(item){item.revive();},this);
     this.restartBtn.kill();
     this.waveCount = 0;
+    this.counterNumText.text = "TAP HERE TO FIRE";
     this.triggerZone.inputEnabled = true;
 };
 
