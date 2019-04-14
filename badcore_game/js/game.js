@@ -4012,7 +4012,7 @@ $( document ).ready(function() {
 		    // window.PhaserGlobal = { disableWebAudio: true }; //fixes web audio issues on iOS
 	}
     // get dimensions of the window considering retina displaysvar w = window.innerWidth * window.devicePixelRatio,    h = window.innerHeight * window.devicePixelRatio;// simply pass them invar game = new Phaser.Game(w, h, Phaser.AUTO, 'gameContainer');
-	window.game = new SPG.SPGame(540,960, Phaser.AUTO,null,null); //this should be all we need to start the game, to configure please see DefaultGameSettings.js
+	window.game = new SPG.SPGame(540,960, Phaser.CANVAS,null,null); //this should be all we need to start the game, to configure please see DefaultGameSettings.js
 });
 
 //# sourceMappingURL=game.js.map
