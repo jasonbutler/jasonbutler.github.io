@@ -2512,7 +2512,7 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.floor.width = this.game.width;
     this.floor.alpha = 0;
 
-    this.cannon = SPG.Util.Display.debugSprite(this.game, this.game.width/2, this.game.height-10, 120, 120, "#ffffff");
+    this.cannon = SPG.Util.Display.debugSprite(this.game, this.game.width/2, this.game.height-20, 160, 60, "#ffffff");
     this.cannon.anchor.setTo(0.5);
 
     this.restartBtn = new TextButton(this.game,this.game.width/2,640,"button","REPLAY",this.restartGame,this);
