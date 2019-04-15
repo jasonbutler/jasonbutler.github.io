@@ -2501,8 +2501,35 @@ SPG.BadcoreGameState.prototype.create = function(){
     }
 
     this.blocks = this.game.add.group();
+    xpos = 40;
+    ypos = 200;
+    bricknum = 0;
+    this.deadBricks = [];
+    for(i = 0;i < 40;i++){
+        var block = SPG.Util.Display.debugSprite(this.game, xpos + (66*bricknum), ypos, 60, 30, "#ffffff");
+        this.game.physics.arcade.enable(block);
 
-   
+        var mortar = this.game.add.graphics(0,0)
+        mortar.lineStyle(3,0x000000,1)
+        mortar.drawRect(-30,-15,60,30);
+        block.addChild(mortar);
+
+        block.body.immovable = true;
+        block.body.allowGravity = false;
+        block.beenHit = false;
+        block.anchor.setTo(0.5);
+        this.blocks.add(block);
+        this.deadBricks.push(block);
+        bricknum++;
+        if(bricknum === 8){
+            bricknum = 0;
+            ypos += 35
+        }
+
+        block.kill();
+    }
+
+    SPG.Util.shuffle(this.deadBricks);
 
     this.floor = this.game.spadd.sprite(this.game.width/2, this.game.height - 10, "submitBtn.png");
     this.game.physics.arcade.enable(this.floor);
@@ -2592,23 +2619,12 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
  
     },this)
 
-    //create a block
-    var xpos = this.game.rnd.integerInRange(0,this.game.width)
-    var ypos = this.game.rnd.integerInRange(180,380);
-    var block = SPG.Util.Display.debugSprite(this.game, xpos, ypos, 60, 30, "#ffffff");
-    this.game.physics.arcade.enable(block);
-
-    var mortar = this.game.add.graphics(0,0)
-    mortar.lineStyle(3,0x000000,1)
-    mortar.drawRect(-30,-15,60,30);
-    block.addChild(mortar);
-
-    
-    block.body.immovable = true;
-    block.body.allowGravity = false;
-    block.beenHit = false;
-    block.anchor.setTo(0.5);
-    this.blocks.add(block);
+    //revive a block
+    var brickChoice = this.game.rnd.integerInRange(0,this.deadBricks.length-1);
+    var brickPick = this.deadBricks[brickChoice];
+    brickPick.revive();
+    console.log("revive brick", brickPick)
+    this.deadBricks.splice(brickChoice,1);
 
     this.waveCount++;
     this.dotsGroup.forEach(function(item){item.revive();},this);
@@ -2618,6 +2634,7 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
 SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
     if(block.beenHit){
         block.destroy();
+        this.deadBricks.push(block);
     }else{
         block.alpha = 0.5;
         block.beenHit = true;
@@ -2626,11 +2643,16 @@ SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
 };
 
 SPG.BadcoreGameState.prototype.restartGame = function(){
-    this.blocks.removeAll();
+    this.blocks.forEachAlive(function(item){
+        item.kill();
+        this.deadBricks.push(item);
+    },this);
+
     this.goals.forEach(function(item){
         item.isSelected = false;
         this.game.add.tween(item.indicator).to({alpha:0},800,Phaser.Easing.Quadratic.Out,true);
     },this)
+
     this.dotsGroup.forEach(function(item){item.revive();},this);
     this.restartBtn.kill();
     this.waveCount = 0;
