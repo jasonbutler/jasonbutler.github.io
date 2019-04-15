@@ -2565,6 +2565,13 @@ SPG.BadcoreGameState.prototype.killFrog = function(obj1, obj2){
         this.dotCount--;
         this.bombsAway = false;
 
+        //do vibrate and screen
+        this.game.camera.shake(0.02,500);
+        if("vibrate" in window.navigator){
+            window.navigator.vibrate(500);
+        }
+
+
         if(this.dotCount === 0){
             this.counterNumText.text = "GAME OVER\nSCORE: "+this.waveCount;
             this.triggerZone.inputEnabled = false;
@@ -2620,11 +2627,11 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
     },this)
 
     //revive a block
-    var brickChoice = this.game.rnd.integerInRange(0,this.deadBricks.length-1);
-    var brickPick = this.deadBricks[brickChoice];
+    var brickPick = this.deadBricks.shift();
     brickPick.revive();
+    brickPick.beenHit = false;
+    brickPick.alpha = 1;
     console.log("revive brick", brickPick)
-    this.deadBricks.splice(brickChoice,1);
 
     this.waveCount++;
     this.dotsGroup.forEach(function(item){item.revive();},this);
@@ -2633,7 +2640,7 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
 
 SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
     if(block.beenHit){
-        block.destroy();
+        block.kill();
         this.deadBricks.push(block);
     }else{
         block.alpha = 0.5;
