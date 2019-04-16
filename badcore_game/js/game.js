@@ -2528,7 +2528,7 @@ SPG.BadcoreGameState.prototype.create = function(){
 
     this.blocks = this.game.add.group();
     xpos = 40;
-    ypos = 200;
+    ypos = 270;
     bricknum = 0;
     this.deadBricks = [];
     for(i = 0;i < 40;i++){
