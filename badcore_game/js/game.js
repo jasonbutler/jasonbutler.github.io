@@ -1925,7 +1925,7 @@ SPG.DefaultGameSettings.prototype = {
 		h1: {
 			font: "alergiaBlack",
 			fontSize: 46,
-			fill: "#ffffff",
+			fill: "#000000",
 			align: "left",
 			fontWeight: "700",
 			wordWrap: true,
@@ -1943,7 +1943,7 @@ SPG.DefaultGameSettings.prototype = {
 		h3: {
 			font: "alergiaBlack",
 			fontSize: 30,
-			fill: "#0066CB",
+			fill: "#000000",
 			align: "left",
 			fontWeight: "700",
 			wordWrap: true,
@@ -2417,7 +2417,7 @@ SPG.BadcoreGameState.prototype.init = function(){
 SPG.BadcoreGameState.prototype.create = function(){
     //called at start of state (after preload)
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.physics.arcade.gravity.y = 200;
+    game.physics.arcade.gravity.y = 10;
     this.game.stage.backgroundColor = 0x000000;
     this.waveCount = 0;
     this.shotsFired = 0;
@@ -2432,7 +2432,7 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.trigger.events.onInputDown.add(this.aimFrog,this);
     this.trigger.events.onInputUp.add(this.fireFrog,this);
 
-    this.counterNum = this.game.add.text(this.game.width/2,this.game.height - 100,this.waveCount);
+    this.counterNum = this.game.add.text(this.game.width/2,this.game.height - 180,this.waveCount,this.game.data.get("fonts.h1"));
     this.counterNum.align = "center";
     this.counterNum.fontSize = 400;
     this.counterNum.stroke = "#FFFFFF";
@@ -2445,59 +2445,15 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.dotCount = 3;
     this.dotsGroup = this.game.add.group();
     for(var i = 0;i < 3;i++){
+        this.trigger.lineStyle(2,0xFFFFFF,1);
+        this.trigger.drawCircle(this.game.width/2 + 180 + (32*i),this.game.height - 20,30);
+
         var dot = this.game.add.graphics(this.game.width/2 + 180 + (32*i),this.game.height - 20)
         dot.beginFill(0xFFFFFF,1)
         dot.drawCircle(0,0,30);
         this.dotsGroup.addChild(dot);
 
     }
-
-    for(var i = 0;i < 20;i++){
-        var frog = this.game.spadd.sprite(0, 0, "frog.png");
-        this.game.physics.arcade.enable(frog);
-        frog.anchor.setTo(0.5)
-        frog.body.bounce.setTo(1);
-        frog.body.collideWorldBounds = true;
-        frog.body.setCircle(12,0,0);
-        this.bullets.add(frog);
-        var frogCircle = this.game.add.graphics(0,0)
-        frogCircle.beginFill(0xFFFFFF,1)
-        frogCircle.drawCircle(0,0,30);
-        frog.addChild(frogCircle);
-        frog.kill();
-    }
-
-    this.triggerRing = this.game.add.graphics(0,0)
-        this.triggerRing.lineStyle(3,0xffffff,1);
-        this.triggerRing.beginFill(0x000000,0)
-        this.triggerRing.drawCircle(0,0,180);
-        this.triggerRing.isSelected = false;
-        this.triggerRing.alpha = 0;
-    
-    this.triggerZone = this.game.add.graphics(0,480);
-    this.triggerZone.beginFill(0xFFFFFF,0.5);
-    this.triggerZone.drawRect(0,0,this.game.width,120);
-    this.triggerZone.endFill();
-    //this.triggerZone.inputEnabled = true;
-
-    
-
-    //this.game.input.onDown.add(this.aimFrog,this);
-    //this.game.input.onUp.add(this.fireFrog,this);
-    // this.triggerZone.events.onInputDown.add(this.aimFrog,this);
-    // this.triggerZone.events.onInputUp.add(this.fireFrog,this);
-
-    
-
-    this.counterNumText = this.game.add.text(this.game.width/2,60,"HOLD DOWN TO AIM");
-    this.counterNumText.anchor.setTo(0.5);
-    this.counterNumText.align = "center";
-    this.triggerZone.addChild(this.counterNumText);
-
-    this.emitter = game.add.emitter(0, 0, 100);
-    //ar bits = this.game.spadd.image(0,0,@particle)
-    this.emitter.makeParticles("blockBit.png");
-    this.emitter.gravity = 200;
 
     this.goals = this.game.add.group();
     for(i = 0;i<3;i++){
@@ -2525,6 +2481,48 @@ SPG.BadcoreGameState.prototype.create = function(){
         this.goals.add(goal);
 
     }
+
+    for(var i = 0;i < 20;i++){
+        var frog = this.game.spadd.sprite(0, 0, "frog.png");
+        this.game.physics.arcade.enable(frog);
+        frog.anchor.setTo(0.5)
+        frog.body.bounce.setTo(1);
+        frog.body.collideWorldBounds = true;
+        frog.body.setCircle(12,0,0);
+        this.bullets.add(frog);
+        var frogCircle = this.game.add.graphics(0,0)
+        frogCircle.beginFill(0xFFFFFF,1)
+        frogCircle.drawCircle(0,0,30);
+        frog.addChild(frogCircle);
+        frog.kill();
+    }
+
+
+    this.triggerRing = this.game.add.graphics(0,0)
+    this.triggerRing.beginFill(0x000000,0)
+    this.triggerRing.lineStyle(5,0x000000,1);
+    this.triggerRing.drawCircle(0,0,180);
+    this.triggerRing.lineStyle(3,0xffffff,1);
+    this.triggerRing.beginFill(0x000000,0)
+    this.triggerRing.drawCircle(0,0,180);
+    this.triggerRing.isSelected = false;
+    this.triggerRing.alpha = 0;
+    
+    this.triggerZone = this.game.add.graphics(0,480);
+    this.triggerZone.beginFill(0xFFFFFF,0.5);
+    this.triggerZone.drawRect(0,0,this.game.width,120);
+    this.triggerZone.endFill();   
+
+    this.holdText = "HOLD DOWN TO AIM\nAND SET SHOT POWER"
+
+    this.counterNumText = this.game.add.text(this.game.width/2,60,this.holdText,this.game.data.get("fonts.h3"));
+    this.counterNumText.anchor.setTo(0.5);
+    this.counterNumText.align = "center";
+    this.triggerZone.addChild(this.counterNumText);
+
+    this.emitter = game.add.emitter(0, 0, 100);
+    this.emitter.makeParticles("blockBit.png");
+    this.emitter.gravity = 200;
 
     this.blocks = this.game.add.group();
     xpos = 40;
@@ -2575,6 +2573,12 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.cannon.sightLine = cannonLine;
     this.cannon.sightLine.alpha = 0;
 
+    this.lineMask = this.game.add.graphics(0,this.game.height);
+    this.lineMask.beginFill();
+    this.lineMask.drawRect(0,-this.game.height,this.game.width,this.game.height);
+    this.lineMask.anchor.y = 1;
+    this.cannon.sightLine.mask = this.lineMask;
+
     this.restartBtn = new TextButton(this.game,this.game.width/2,640,"button","REPLAY",this.restartGame,this);
     this.restartBtn.kill();
 };
@@ -2592,7 +2596,7 @@ SPG.BadcoreGameState.prototype.aimFrog = function(){
 SPG.BadcoreGameState.prototype.fireFrog = function(){
     if(!this.cockIt){return;}
 
-    this.counterNumText.text = "HOLD DOWN TO AIM"
+    this.counterNumText.text = this.holdText
     this.triggerRing.isSelected = false;
     this.triggerRing.alpha = 0;
     this.game.add.tween(this.cannon.scale).to({x:1,y:1},500,Phaser.Easing.Elastic.Out,true);
@@ -2641,11 +2645,11 @@ SPG.BadcoreGameState.prototype.killFrog = function(obj1, obj2){
 
 SPG.BadcoreGameState.prototype.bigRing = function(objx, objy){
     var deathRing = this.game.add.graphics(objx,objy);
-    deathRing.lineStyle(1,0xFFFFFF,6)
+    deathRing.lineStyle(6,0xFFFFFF,1)
     deathRing.drawCircle(0,0,700);
     deathRing.scale.setTo(0);
     this.game.add.tween(deathRing.scale).to({x:1,y:1},800,Phaser.Easing.Quadratic.Out,true);
-    var hideT = this.game.add.tween(deathRing).to({alpha:0},300,Phaser.Easing.Quadratic.Out,true,500);
+    var hideT = this.game.add.tween(deathRing).to({alpha:0},800,Phaser.Easing.Quadratic.Out,true);
     hideT.onComplete.add(function(){deathRing.destroy();},this);
 };
 
@@ -2699,15 +2703,15 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
     //revive a block
     var brickPick = this.deadBricks.shift();
     brickPick.revive();
-    brickPick.beenHit = false;
+    brickPick.beenHit = (this.waveCount >= 10)?false:true;
     brickPick.alpha = 1;
     console.log("revive brick", brickPick)
 
-    var brickPick = this.deadBricks.shift();
-    brickPick.revive();
-    brickPick.beenHit = false;
-    brickPick.alpha = 1;
-    console.log("revive brick", brickPick)
+    var brickPick_2 = this.deadBricks.shift();
+    brickPick_2.revive();
+    brickPick_2.beenHit = (this.waveCount >= 10)?false:true;
+    brickPick_2.alpha = 1;
+    console.log("revive brick", brickPick_2)
 
     this.waveCount++;
     this.dotsGroup.forEach(function(item){item.revive();},this);
@@ -2744,7 +2748,7 @@ SPG.BadcoreGameState.prototype.restartGame = function(){
     this.dotsGroup.forEach(function(item){item.revive();},this);
     this.restartBtn.kill();
     this.waveCount = 0;
-    this.counterNumText.text = "HOLD DOWN TO AIM";
+    this.counterNumText.text = this.holdText;
     this.trigger.inputEnabled = true;
 };
 
@@ -2764,6 +2768,7 @@ SPG.BadcoreGameState.prototype.update = function() {
     if(this.triggerRing.isSelected){
         this.triggerRing.x = this.game.input.activePointer.x;
         this.triggerRing.y = this.game.input.activePointer.y;
+        this.lineMask.height = this.game.height - this.game.input.activePointer.y;
     }
 
     this.cannon.sightLine.alpha = (this.triggerRing.isSelected)?1:0;
