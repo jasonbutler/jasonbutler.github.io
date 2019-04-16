@@ -2731,6 +2731,7 @@ SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
     if(block.isExplosive){
         block.tint = 0xFFFFFF;
         block.kill();
+        this.bigRing(block.x,block.y)
         var bombCircle = SPG.Util.Display.MakePanelImg(this.game, 300, 300, 150, "#FFFFFF", block.x,block.y);
         bombCircle.anchor.setTo(0.5);
         var impactBlast = this.game.add.tween(bombCircle.scale).from({x:0,y:0},200,Phaser.Easing.Quadratic.Out,true);
