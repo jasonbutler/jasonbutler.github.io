@@ -2423,6 +2423,7 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.shotsFired = 0;
     this.cockIt=false;
     this.bombsAway = false;
+    this.streak = 0;
 
     this.trigger = this.game.add.graphics(0,0);
     this.trigger.beginFill();
@@ -2509,7 +2510,7 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.triggerRing.alpha = 0;
     
     this.triggerZone = this.game.add.graphics(0,480);
-    this.triggerZone.beginFill(0xFFFFFF,0.5);
+    this.triggerZone.beginFill(0xFFFFFF,0.25);
     this.triggerZone.drawRect(0,0,this.game.width,120);
     this.triggerZone.endFill();   
 
@@ -2621,6 +2622,7 @@ SPG.BadcoreGameState.prototype.killFrog = function(obj1, obj2){
         this.dotsGroup.getFirstAlive().kill();
         this.dotCount--;
         this.shotsFired--;
+        this.streak = 0;
 
         //do vibrate and screen
         this.game.camera.shake(0.02,500);
@@ -2645,7 +2647,7 @@ SPG.BadcoreGameState.prototype.killFrog = function(obj1, obj2){
 
 SPG.BadcoreGameState.prototype.bigRing = function(objx, objy){
     var deathRing = this.game.add.graphics(objx,objy);
-    deathRing.lineStyle(6,0xFFFFFF,1)
+    deathRing.lineStyle(12,0xFFFFFF,1)
     deathRing.drawCircle(0,0,700);
     deathRing.scale.setTo(0);
     this.game.add.tween(deathRing.scale).to({x:1,y:1},800,Phaser.Easing.Quadratic.Out,true);
@@ -2670,8 +2672,9 @@ SPG.BadcoreGameState.prototype.checkGoal = function(frog,goal){
     }
 
     goal.indicator.alpha = (goal.isSelected)? 1 : 0;
+    this.streak++;
     //
-
+    console.log(this.streak)
 };
 
 SPG.BadcoreGameState.prototype.checkAllFilled = function(obj1, obj2){
@@ -2711,6 +2714,12 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
     brickPick_2.revive();
     brickPick_2.beenHit = (this.waveCount >= 10)?false:true;
     brickPick_2.alpha = 1;
+    //if streak above 10 add special boomboom
+    if(this.streak >= 10){
+        brickPick_2.isExplosive = true;
+        brickPick_2.tint = 0x990000;
+        this.streak = 0;
+    }
     console.log("revive brick", brickPick_2)
 
     this.waveCount++;
@@ -2719,19 +2728,48 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
 };
 
 SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
-    if(block.beenHit){
+    if(block.isExplosive){
+        block.tint = 0xFFFFFF;
         block.kill();
-        this.bigRing(block.x,block.y)
-        this.emitter.x = block.x;
-        this.emitter.y = block.y;
-        this.emitter.start(true, 2000, null, 3);
-        this.emitter.alpha = 0.5;
-        this.deadBricks.push(block);
+        var bombCircle = SPG.Util.Display.MakePanelImg(this.game, 300, 300, 150, "#FFFFFF", block.x,block.y);
+        bombCircle.anchor.setTo(0.5);
+        var impactBlast = this.game.add.tween(bombCircle.scale).from({x:0,y:0},200,Phaser.Easing.Quadratic.Out,true);
+        impactBlast.onComplete.add(function(){
+            this.blocks.forEachAlive(function(item){
+                console.log("me too?", SPG.Util.Math.checkOverlap(item,bombCircle))
+                if(SPG.Util.Math.checkOverlap(item,bombCircle) === true){
+                    console.log("blew me too")
+                    item.kill();
+                    this.blockEmitter(item);
+                    this.deadBricks.push(item);
+                }
+            },this);
+
+        },this);
+        
+        var afterGlow = this.game.add.tween(bombCircle).to({alpha:0},400,Phaser.Easing.Quadratic.Out,false);
+        afterGlow.onComplete.add(function(){bombCircle.destroy();},this);
+        impactBlast.chain(afterGlow);
+        
     }else{
-        block.alpha = 0.5;
-        block.beenHit = true;
+        if(block.beenHit){
+            block.kill();
+            this.bigRing(block.x,block.y)
+            this.blockEmitter(block);
+            this.deadBricks.push(block);
+        }else{
+            block.alpha = 0.5;
+            block.beenHit = true;
+        }
     }
-    
+
+};
+
+SPG.BadcoreGameState.prototype.blockEmitter = function(block){
+    this.emitter.x = block.x;
+    this.emitter.y = block.y;
+    this.emitter.start(true, 2000, null, 3);
+    this.emitter.alpha = 0.5;
 };
 
 SPG.BadcoreGameState.prototype.restartGame = function(){
