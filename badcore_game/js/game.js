@@ -2568,8 +2568,14 @@ SPG.BadcoreGameState.prototype.create = function(){
     this.cannon.anchor.setTo(0.5);
 
     var cannonLine = this.game.add.graphics(0,0)
-    cannonLine.lineStyle(1,0xFFFFFF,1)
-    cannonLine.lineTo(700,0);
+    cannonLine.lineStyle(3,0xFFFFFF,1)
+    xPos = 20;
+    for(i = 0;i < 48;i++){
+        cannonLine.moveTo(xPos,0)
+        cannonLine.lineTo(xPos + 10,0)
+        xPos += 20;
+    }
+
     this.cannon.addChild(cannonLine);
     this.cannon.sightLine = cannonLine;
     this.cannon.sightLine.alpha = 0;
@@ -2587,24 +2593,23 @@ SPG.BadcoreGameState.prototype.create = function(){
 SPG.BadcoreGameState.prototype.aimFrog = function(){
     
     if(this.shotsFired>=3){return;}
-    this.cockIt = true;
+
     this.game.add.tween(this.cannon.scale).to({x:1.2,y:0.7},500,Phaser.Easing.Elastic.Out,true);
     this.counterNumText.text = "RELEASE TO FIRE";
     this.triggerRing.isSelected = true;
-    this.triggerRing.alpha = 1;
+    this.triggerRing.alpha =  1;
 };
 
 SPG.BadcoreGameState.prototype.fireFrog = function(){
-    if(!this.cockIt){return;}
+    if(this.shotsFired>=3){return;}
 
     this.counterNumText.text = this.holdText
     this.triggerRing.isSelected = false;
-    this.triggerRing.alpha = 0;
+    this.triggerRing.alpha =  0;
     this.game.add.tween(this.cannon.scale).to({x:1,y:1},500,Phaser.Easing.Elastic.Out,true);
     var bullet = this.bullets.getFirstDead();
     if(bullet === null || this.bombsAway){return;}
     bullet.shotOut = false;
-    this.cockIt = false;
     this.shotsFired++;
     bullet.revive();
     bullet.reset(this.game.width/2, this.game.height-30)
@@ -2618,12 +2623,9 @@ SPG.BadcoreGameState.prototype.killFrog = function(obj1, obj2){
         obj2.kill();
         this.bigRing(obj2.x,obj2.y)
         
-
-        this.dotsGroup.getFirstAlive().kill();
         this.dotCount--;
         this.shotsFired--;
         this.streak = 0;
-
         //do vibrate and screen
         this.game.camera.shake(0.02,500);
         if("vibrate" in window.navigator){
@@ -2631,14 +2633,21 @@ SPG.BadcoreGameState.prototype.killFrog = function(obj1, obj2){
         }
 
 
-        if(this.dotCount === 0){
+        if(this.dotCount <= 0){
             this.counterNumText.text = "GAME OVER\nSCORE: "+this.waveCount;
             this.trigger.inputEnabled = false;
+            this.cannon.sightLine.alpha = this.triggerRing.alpha = 0;
+            
             //this.game.input.destroy();
             
             this.restartBtn.revive();
             this.restartBtn.inputEnabled = true;
             
+        }else{
+            this.dotsGroup.getFirstAlive().kill();
+        
+        
+        
         }
     }
     //
@@ -2729,28 +2738,7 @@ SPG.BadcoreGameState.prototype.nextWave = function(){
 
 SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
     if(block.isExplosive){
-        block.tint = 0xFFFFFF;
-        block.kill();
-        this.bigRing(block.x,block.y)
-        var bombCircle = SPG.Util.Display.MakePanelImg(this.game, 300, 300, 150, "#FFFFFF", block.x,block.y);
-        bombCircle.anchor.setTo(0.5);
-        var impactBlast = this.game.add.tween(bombCircle.scale).from({x:0,y:0},200,Phaser.Easing.Quadratic.Out,true);
-        impactBlast.onComplete.add(function(){
-            this.blocks.forEachAlive(function(item){
-                console.log("me too?", SPG.Util.Math.checkOverlap(item,bombCircle))
-                if(SPG.Util.Math.checkOverlap(item,bombCircle) === true){
-                    console.log("blew me too")
-                    item.kill();
-                    this.blockEmitter(item);
-                    this.deadBricks.push(item);
-                }
-            },this);
-
-        },this);
-        
-        var afterGlow = this.game.add.tween(bombCircle).to({alpha:0},400,Phaser.Easing.Quadratic.Out,false);
-        afterGlow.onComplete.add(function(){bombCircle.destroy();},this);
-        impactBlast.chain(afterGlow);
+        this.hitRedBrick(block)
         
     }else{
         if(block.beenHit){
@@ -2764,6 +2752,49 @@ SPG.BadcoreGameState.prototype.checkBlock = function(frog,block){
         }
     }
 
+};
+
+SPG.BadcoreGameState.prototype.redBrickBang = function(item){
+    this.game.camera.shake(0.01,200);
+    this.bigRing(item.x,item.y)
+    var bombCircle2 = SPG.Util.Display.MakePanelImg(this.game, 300, 300, 150, "#FFFFFF", item.x,item.y);
+    bombCircle2.anchor.setTo(0.5);
+    var afterGlow2 = this.game.add.tween(bombCircle2).to({alpha:0},400,Phaser.Easing.Quadratic.Out,false);
+    var impactBlast2 = this.game.add.tween(bombCircle2.scale).from({x:0,y:0},200,Phaser.Easing.Quadratic.Out,true);
+    afterGlow2.onComplete.add(function(){bombCircle2.destroy();},this);
+    impactBlast2.chain(afterGlow2);
+}
+
+SPG.BadcoreGameState.prototype.hitRedBrick = function(block){
+    block.tint = 0xFFFFFF;
+    block.kill();
+    this.bigRing(block.x,block.y)
+    this.deadBricks.push(block);
+    this.game.camera.shake(0.01,200);
+    var bombCircle = SPG.Util.Display.MakePanelImg(this.game, 300, 300, 150, "#FFFFFF", block.x,block.y);
+    bombCircle.anchor.setTo(0.5);
+    var impactBlast = this.game.add.tween(bombCircle.scale).from({x:0,y:0},200,Phaser.Easing.Quadratic.Out,true);
+    impactBlast.onComplete.add(function(){
+        this.blocks.forEachAlive(function(item){
+            //console.log("me too?", SPG.Util.Math.checkOverlap(item,bombCircle))
+            if(SPG.Util.Math.checkOverlap(item,bombCircle) === true){
+                //console.log("blew me too")
+                if(item.isExplosive){
+                    this.game.time.events.add(250,this.redBrickBang,this,item);
+                }
+                
+                item.kill();
+                this.blockEmitter(item);
+                this.deadBricks.push(block);
+                
+            }
+        },this);
+
+    },this);
+    
+    var afterGlow = this.game.add.tween(bombCircle).to({alpha:0},400,Phaser.Easing.Quadratic.Out,false);
+    afterGlow.onComplete.add(function(){bombCircle.destroy();},this);
+    impactBlast.chain(afterGlow);
 };
 
 SPG.BadcoreGameState.prototype.blockEmitter = function(block){
