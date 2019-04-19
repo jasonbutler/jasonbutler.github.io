@@ -2768,6 +2768,7 @@ SPG.BadcoreGameState.prototype.redBrickBang = function(item){
 SPG.BadcoreGameState.prototype.hitRedBrick = function(block){
     block.tint = 0xFFFFFF;
     block.kill();
+    block.isExplosive = false;
     this.bigRing(block.x,block.y)
     this.deadBricks.push(block);
     this.game.camera.shake(0.01,200);
@@ -2779,7 +2780,9 @@ SPG.BadcoreGameState.prototype.hitRedBrick = function(block){
             //console.log("me too?", SPG.Util.Math.checkOverlap(item,bombCircle))
             if(SPG.Util.Math.checkOverlap(item,bombCircle) === true){
                 //console.log("blew me too")
-                if(item.isExplosive){
+                if(item.isExplosive){                  
+                    item.isExplosive = false;
+                    item.tint = 0xFFFFFF;
                     this.game.time.events.add(250,this.redBrickBang,this,item);
                 }
                 
